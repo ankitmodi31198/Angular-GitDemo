@@ -1,0 +1,27 @@
+.gitdemo-homepage-github-user-grid-container {
+    margin-top: 1.5rem;
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    .gitdemo-no-records-found {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        td {
+            text-align: center;
+        }
+    }
+    .gitdemo-delete-button {
+        text-align:center;
+        button {
+            background-color: red;
+            color: white;
+        }
+    }
+}

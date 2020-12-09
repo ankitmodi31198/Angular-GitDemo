@@ -3,6 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LocalstorageService } from './service/localstorageservice.service';
+import { HomepageModule } from './homepage/homepage.module';
+import { LoginModule } from './login/login.module';
+import { SignupModule } from './signup/signup.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -10,9 +16,19 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    LoginModule,
+    HomepageModule,
+    SignupModule,
+    HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    LocalstorageService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

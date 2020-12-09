@@ -1,0 +1,21 @@
+<div class="gitdemo-signup-container">
+  <div class="gitdemo-welcome-title">
+    <h1>
+      Welcome to GitDemo Project!
+    </h1>
+  </div>
+  <div>
+    <h2>
+      LogIn Form
+    </h2>
+    <form [formGroup]="logInForm" (ngSubmit)="logIn()">
+      <input formControlName="email" type="email" placeholder="please enter your email">
+      <input formControlName="password" type="password" placeholder="please enter your password">
+      <button type="submit">LogIn</button>
+    </form>
+  </div>
+  <div>
+    Don't have an account?
+    <a [routerLink]="['/signup']">Sign Up</a>
+  </div>
+</div>

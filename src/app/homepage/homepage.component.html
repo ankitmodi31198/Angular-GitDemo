@@ -1,0 +1,36 @@
+<div class="gitdemo-homepage-container">
+  <div>
+    Welcome to GitDemo!
+  </div>
+  <div>
+    <form [formGroup]="searchForGithub" (ngSubmit)="searchForGithubProfile()">
+      <input formControlName="reprositoryName" type="text" placeholder="please enter github username">
+      <button type="submit">Add To Grid</button>
+    </form>
+  </div>
+  <div class="gitdemo-homepage-github-user-grid-container">
+    <form [formGroup]="githubGridFormGroup">
+      <!-- <input type="text" placeholder="search in grid" [(ngModel)]="searchText" (keydown)="onSearchTextChanges($event)"> -->
+      <input type="text" placeholder="search in grid" formControlName="gridSearch">
+    </form>
+    <table>
+      <tr>
+        <th>Login</th>
+        <th>Name</th>
+        <th>Avatar url</th>
+        <th>Public repos</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let eachGithubUserData of localStorageGithubUserListData; index as i">
+        <td>{{eachGithubUserData.login}}</td>
+        <td>{{eachGithubUserData.name}}</td>
+        <td>{{eachGithubUserData.avatar_url}}</td>
+        <td>{{eachGithubUserData.public_repos}}</td>
+        <td class="gitdemo-delete-button"><button (click)="deleteRowClickHandler(eachGithubUserData)">Delete</button></td>
+      </tr>
+      <tr class="gitdemo-no-records-found" *ngIf="!(localStorageGithubUserListData && localStorageGithubUserListData.length > 0)">
+        <td colspan="5">No Records found</td>
+      </tr>
+    </table>
+  </div>
+</div>
