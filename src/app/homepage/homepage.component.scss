@@ -55,4 +55,13 @@
     .gitdemo-search-container {
         display: flex;
     }
+    .gitdemo-homepage-header {
+        display: flex;
+        .gitdemo-text {
+            width: 98%;
+        }
+        span.gitdemo-logout {
+            cursor: pointer;
+        }
+    }
 }

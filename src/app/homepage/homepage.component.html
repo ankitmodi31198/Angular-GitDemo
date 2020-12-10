@@ -1,7 +1,12 @@
 <div class="gitdemo-homepage-container">
-  <h1 class="gitdemo-text">
-    Welcome to GitDemo!
-  </h1>
+  <div class="gitdemo-homepage-header">
+    <h1 class="gitdemo-text">
+      Welcome to GitDemo!
+    </h1>
+    <span class="gitdemo-logout" (click)="logoutClickHandler()">
+      Logout
+    </span>
+  </div>
   <div>
     <form [formGroup]="searchForGithub" (ngSubmit)="searchForGithubProfile()">
       <div class="gitdemo-search-container">
