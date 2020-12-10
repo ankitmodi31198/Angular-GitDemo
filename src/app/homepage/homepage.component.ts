@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { debounceTime, take } from 'rxjs/operators';
 import { getFormControlValue, LocalStorageKeyTypes } from '../helpers/utils';
@@ -25,7 +26,8 @@ export class HomepageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private githubDataService: GithubDataService,
-    private localstorageservice: LocalstorageService
+    private localstorageservice: LocalstorageService,
+    private router: Router
   ) {
     this.localStorageGithubUserListData = this.localstorageservice.getLocalStorage(LocalStorageKeyTypes.GITHUB_USERS_LIST);
   }
@@ -122,6 +124,11 @@ export class HomepageComponent implements OnInit, AfterViewInit, OnDestroy {
       const localStorageGithubUserListData: Array<any> = this.localstorageservice.getLocalStorage(LocalStorageKeyTypes.GITHUB_USERS_LIST).filter(eachGithubUserList => !(eachGithubUserList.id == eachGithubUserData.id))
       this.localstorageservice.setLocalStorage(LocalStorageKeyTypes.GITHUB_USERS_LIST, localStorageGithubUserListData);
     }
+  }
+
+  logoutClickHandler() {
+    this.localstorageservice.removeLocalStorage(LocalStorageKeyTypes.LOGIN_USER);
+    this.router.navigate(['/login']);
   }
 
   ngOnDestroy() {
