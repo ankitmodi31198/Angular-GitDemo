@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormStatus, getFormControlValue, LocalStorageKeyTypes } from '../helpers/utils';
+import { emailValidator, FormStatus, getFormControlValue, LocalStorageKeyTypes } from '../helpers/utils';
 import { LocalstorageService } from '../service/localstorageservice.service';
 
 @Component({
@@ -41,8 +41,10 @@ export class SignupComponent implements OnInit {
   createSignupForm() {
     this.signupForm = new FormGroup({
       "name": new FormControl(null, [Validators.required, Validators.minLength(2)]),
-      "email": new FormControl(null, [Validators.required]),
-      "password": new FormControl(null, [Validators.required, Validators.minLength(6)])
+      "email": new FormControl(null, [Validators.required,
+        Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]),
+      "password": new FormControl(null, [Validators.required, Validators.minLength(6),
+        Validators.pattern(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/)])
     })
   }
 

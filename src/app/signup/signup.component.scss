@@ -15,7 +15,6 @@
             width: 100%;
             overflow: visible;
             border-radius: 10px;
-            margin-bottom: 10px;
         }
         .gitdemo-button {
             color: #fff;
@@ -34,6 +33,12 @@
             background-color: #eff0f1;
             .label-input-container {
                 margin-left: 5%;
+                margin-bottom: 10px;
+                p {
+                    margin: 0px;
+                    color: red;
+                    font-size: 13px;
+                }
             }
         }
     }

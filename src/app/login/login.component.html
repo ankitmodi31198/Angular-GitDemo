@@ -15,12 +15,17 @@
           <label>Email:</label>
           <input formControlName="email" type="email" placeholder="Please enter your email"  class="width80"
             [ngClass]="{'error-red-border': logInForm.get('email')?.errors && (logInForm.get('email')?.touched || submittedInvalidForm)}">
+          <p *ngIf="(logInForm.get('email')?.errors && logInForm.get('email')?.errors.required) && (logInForm.get('email')?.touched || submittedInvalidForm)">*Email required</p>
+          <p *ngIf="(logInForm.get('email')?.errors && logInForm.get('email')?.errors.pattern) && (logInForm.get('email')?.touched || submittedInvalidForm)">*Valid email required</p>
         </div>
 
         <div class="label-input-container">
           <label>Password:</label>
           <input formControlName="password" type="password" placeholder="Please enter your password"  class="width80"
             [ngClass]="{'error-red-border': logInForm.get('password')?.errors && (logInForm.get('password')?.touched || submittedInvalidForm)}">
+          <p *ngIf="(logInForm.get('password')?.errors && logInForm.get('password')?.errors.required) && (logInForm.get('password')?.touched || submittedInvalidForm)">*Password required</p>
+          <p *ngIf="(logInForm.get('password')?.errors && logInForm.get('password')?.errors.minLength) && (logInForm.get('password')?.touched || submittedInvalidForm)">*Password should have minimum 6 characters</p>
+          <p *ngIf="(logInForm.get('password')?.errors && logInForm.get('password')?.errors.pattern) && (logInForm.get('password')?.touched || submittedInvalidForm)">*Valid password required(minimum one number and one character required)</p>
         </div>
         <button class="gitdemo-button" type="submit">LogIn</button>
       </form>
