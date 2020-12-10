@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { getFormControlValue, LocalStorageKeyTypes } from '../helpers/utils';
+import { FormStatus, getFormControlValue, LocalStorageKeyTypes } from '../helpers/utils';
 import { LocalstorageService } from '../service/localstorageservice.service';
 
 @Component({
@@ -19,6 +19,14 @@ export class SignupComponent implements OnInit {
    */
   signupForm: FormGroup;
 
+  /**
+   * if user trying to submit form and he doesn't touch one of the mandatory property then at that time want to give red border, it will be used there 
+   *
+   * @type {boolean}
+   * @memberof SignupComponent
+   */
+  submittedInvalidForm: boolean = false;
+
   constructor(
     private localstorageserviceService: LocalstorageService,
     private router: Router
@@ -32,9 +40,9 @@ export class SignupComponent implements OnInit {
 
   createSignupForm() {
     this.signupForm = new FormGroup({
-      "name": new FormControl(null, [Validators.required]),
+      "name": new FormControl(null, [Validators.required, Validators.minLength(2)]),
       "email": new FormControl(null, [Validators.required]),
-      "password": new FormControl(null, [Validators.required])
+      "password": new FormControl(null, [Validators.required, Validators.minLength(6)])
     })
   }
 
@@ -46,6 +54,10 @@ export class SignupComponent implements OnInit {
    */
   signup() {
     if (this.signupForm) {
+      if (this.signupForm.status && this.signupForm.status.toUpperCase() === FormStatus.INVALID) {
+        this.submittedInvalidForm = true;
+        return;
+      }
 
       const signupData: any = {
         name: getFormControlValue('name', this.signupForm),

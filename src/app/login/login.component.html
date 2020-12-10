@@ -1,21 +1,34 @@
-<div class="gitdemo-signup-container">
+<div class="gitdemo-login-container">
   <div class="gitdemo-welcome-title">
     <h1>
       Welcome to GitDemo Project!
     </h1>
   </div>
-  <div>
-    <h2>
-      LogIn Form
-    </h2>
-    <form [formGroup]="logInForm" (ngSubmit)="logIn()">
-      <input formControlName="email" type="email" placeholder="please enter your email">
-      <input formControlName="password" type="password" placeholder="please enter your password">
-      <button type="submit">LogIn</button>
-    </form>
-  </div>
-  <div>
-    Don't have an account?
-    <a [routerLink]="['/signup']">Sign Up</a>
+  <div class="gitdemo-login-form-container">
+    <div class="gitdemo-login-form-box">
+      <h2  class="gitdemo-login-text">
+        <u>LogIn Form</u>
+      </h2>
+      <form [formGroup]="logInForm" (ngSubmit)="logIn()">
+
+        <div class="label-input-container">
+          <label>Email:</label>
+          <input formControlName="email" type="email" placeholder="Please enter your email"  class="width80"
+            [ngClass]="{'error-red-border': logInForm.get('email')?.errors && (logInForm.get('email')?.touched || submittedInvalidForm)}">
+        </div>
+
+        <div class="label-input-container">
+          <label>Password:</label>
+          <input formControlName="password" type="password" placeholder="Please enter your password"  class="width80"
+            [ngClass]="{'error-red-border': logInForm.get('password')?.errors && (logInForm.get('password')?.touched || submittedInvalidForm)}">
+        </div>
+        <button class="gitdemo-button" type="submit">LogIn</button>
+      </form>
+    </div>
+
+    <div class="gitdemo-signup-link">
+      Don't have an account?
+      <a [routerLink]="['/signup']">Sign Up</a>
+    </div>
   </div>
 </div>

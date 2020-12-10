@@ -8,5 +8,11 @@ export function getFormControlValue(formControlName: string, formGroup: FormGrou
 
 export enum LocalStorageKeyTypes {
     USER_DETAIL = 'userDetail',
-    GITHUB_USERS_LIST = 'githubUserList'
+    GITHUB_USERS_LIST = 'githubUserList',
+    LOGIN_USER = 'loginUser'
+}
+
+export enum FormStatus {
+    VALID = 'VALID',
+    INVALID = 'INVALID'
 }

@@ -4,19 +4,35 @@
       Welcome to GitDemo Project!
     </h1>
   </div>
-  <div>
-    <h2>
-      Sign Up Form
-    </h2>
-    <form [formGroup]="signupForm" (ngSubmit)="signup()">
-      <input formControlName="name" type="text" placeholder="please enter your name">
-      <input formControlName="email" type="email" placeholder="please enter your email">
-      <input formControlName="password" type="password" placeholder="please enter your password">
-      <button type="submit">Sing Up</button>
-    </form>
-  </div>
-  <div>
-    Already have an account?
-    <a [routerLink]="['/login']">Login</a>
+  <div class="gitdemo-signup-form-container">
+    <div class="gitdemo-signup-form-box">
+      <h2 class="gitdemo-signup-text">
+        <u>Sign Up Form</u>
+      </h2>
+      <form [formGroup]="signupForm" (ngSubmit)="signup()">
+        <div class="label-input-container">
+          <label>Name:</label>
+          <input formControlName="name" type="text" placeholder="Please enter your name" class="width80"
+            [ngClass]="{'error-red-border': signupForm.get('name')?.errors && (signupForm.get('name')?.touched || submittedInvalidForm)}">
+        </div>
+
+        <div class="label-input-container">
+          <label>Email:</label>
+          <input formControlName="email" type="email" placeholder="Please enter your email" class="width80"
+            [ngClass]="{'error-red-border': signupForm.get('email')?.errors && (signupForm.get('email')?.touched || submittedInvalidForm)}">
+        </div>
+          
+        <div class="label-input-container">
+          <label>Password:</label>
+          <input formControlName="password" type="password" placeholder="Please enter your password" class="width80"
+            [ngClass]="{'error-red-border': signupForm.get('password')?.errors && (signupForm.get('password')?.touched || submittedInvalidForm)}">
+        </div>
+        <button class="gitdemo-button" type="submit">Sing Up</button>
+      </form>
+    </div>
+    <div class="gitdemo-login-link">
+      Already have an account?
+      <a [routerLink]="['/login']">Login</a>
+    </div>
   </div>
 </div>

@@ -2,4 +2,46 @@
     .gitdemo-welcome-title {
         text-align:center;
     }
+    .width80 {
+        width: 80% !important;
+    }
+    .gitdemo-signup-form-container {
+        padding: 0px 35%;
+        input {
+            padding: 8px;
+            display: block;
+            border: none;
+            border: 1px solid #ccc;
+            width: 100%;
+            overflow: visible;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .gitdemo-button {
+            color: #fff;
+            background-color: #4CAF50;
+            padding: 8px 25px;
+            border-radius: 5px;
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .gitdemo-button:hover {
+            color: #000!important;
+            background-color: #ccc!important;
+        }
+        .gitdemo-signup-form-box {
+            background-color: #eff0f1;
+            .label-input-container {
+                margin-left: 5%;
+            }
+        }
+    }
+    .gitdemo-login-link {
+        margin-top: 10px;
+        text-align: right;
+    }
+    .gitdemo-signup-text {
+        text-align: center;
+    }
 }

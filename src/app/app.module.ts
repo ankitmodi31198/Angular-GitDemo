@@ -9,6 +9,7 @@ import { LoginModule } from './login/login.module';
 import { SignupModule } from './signup/signup.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
+    AuthGuard,
     LocalstorageService
   ],
   bootstrap: [

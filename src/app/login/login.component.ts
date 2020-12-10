@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { getFormControlValue, LocalStorageKeyTypes } from '../helpers/utils';
+import { FormStatus, getFormControlValue, LocalStorageKeyTypes } from '../helpers/utils';
 import { LocalstorageService } from '../service/localstorageservice.service';
 
 @Component({
@@ -19,6 +19,14 @@ export class LoginComponent implements OnInit {
    */
   logInForm: FormGroup;
 
+  /**
+    * if user trying to submit form and he doesn't touch one of the mandatory property then at that time want to give red border, it will be used there 
+   *
+   * @type {boolean}
+   * @memberof LoginComponent
+   */
+  submittedInvalidForm: boolean = false;
+
   constructor(
     private localstorageserviceService: LocalstorageService,
     private router: Router
@@ -33,7 +41,7 @@ export class LoginComponent implements OnInit {
   createLoginForm() {
     this.logInForm = new FormGroup({
       "email": new FormControl(null, [Validators.required]),
-      "password": new FormControl(null, [Validators.required])
+      "password": new FormControl(null, [Validators.required, Validators.minLength(6)])
     })
   }
 
@@ -44,6 +52,10 @@ export class LoginComponent implements OnInit {
    */
   logIn() {
     if (this.logInForm) {
+      if (this.logInForm && this.logInForm.status && this.logInForm.status.toUpperCase() === FormStatus.INVALID) {
+        this.submittedInvalidForm = true;
+        return;
+      }
 
       const logInFormData: any = {
         email: getFormControlValue('email', this.logInForm),
@@ -56,6 +68,7 @@ export class LoginComponent implements OnInit {
           const loggedInUserDetail = localStorageUserData.find((eachUserData) => eachUserData.email && eachUserData.email == logInFormData.email);
           if (loggedInUserDetail) {
             if (loggedInUserDetail.password == logInFormData.password) {
+              this.localstorageserviceService.setLocalStorage(LocalStorageKeyTypes.LOGIN_USER, [logInFormData]);
               window.alert('login successful');
               this.router.navigate(['/home']);
             } else {
