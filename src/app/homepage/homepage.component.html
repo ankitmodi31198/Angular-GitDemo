@@ -1,17 +1,19 @@
 <div class="gitdemo-homepage-container">
-  <div>
+  <h1 class="gitdemo-text">
     Welcome to GitDemo!
-  </div>
+  </h1>
   <div>
     <form [formGroup]="searchForGithub" (ngSubmit)="searchForGithubProfile()">
-      <input formControlName="reprositoryName" type="text" placeholder="please enter github username">
-      <button type="submit">Add To Grid</button>
+      <div class="gitdemo-search-container">
+        <input formControlName="reprositoryName" type="text" placeholder="Please enter github username">
+        <button class="gitdemo-button" type="submit">Add To Grid</button>
+      </div>
     </form>
   </div>
   <div class="gitdemo-homepage-github-user-grid-container">
     <form [formGroup]="githubGridFormGroup">
       <!-- <input type="text" placeholder="search in grid" [(ngModel)]="searchText" (keydown)="onSearchTextChanges($event)"> -->
-      <input type="text" placeholder="search in grid" formControlName="gridSearch">
+      <input type="text" placeholder="Search in grid" formControlName="gridSearch">
     </form>
     <table>
       <tr>

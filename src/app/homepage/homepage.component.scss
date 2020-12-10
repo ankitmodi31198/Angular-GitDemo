@@ -25,3 +25,32 @@
         }
     }
 }
+.gitdemo-homepage-container {
+    .gitdemo-text {
+        text-align: center;
+    }
+    input {
+        padding: 8px;
+        display: block;
+        border: none;
+        border: 1px solid #ccc;
+        width: 500px;
+        overflow: visible;
+        border-radius: 10px;
+    }
+    .gitdemo-button {
+        color: #fff;
+        background-color: #4CAF50;
+        padding: 8px 25px;
+        border-radius: 5px;
+        display: flex;
+        margin-left: 10px;
+    }
+    .gitdemo-button:hover {
+        color: #000!important;
+        background-color: #ccc!important;
+    }
+    .gitdemo-search-container {
+        display: flex;
+    }
+}
