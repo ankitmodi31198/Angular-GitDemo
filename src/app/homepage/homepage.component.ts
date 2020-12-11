@@ -44,6 +44,7 @@ export class HomepageComponent implements OnInit, AfterViewInit, OnDestroy {
       .subscribe((value) => {
         console.log(value);
         if (value) {
+          this.localStorageGithubUserListData = this.localstorageservice.getLocalStorage(LocalStorageKeyTypes.GITHUB_USERS_LIST);
           this.localStorageGithubUserListData = this.localStorageGithubUserListData.filter(eachRow => 
             (eachRow.id && eachRow.id.toString().includes(value)) ||
             (eachRow.login && eachRow.login.toString().includes(value)) ||
